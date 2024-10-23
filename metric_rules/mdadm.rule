@@ -1,0 +1,9 @@
+groups:
+  - name: mdadm
+    rules:
+      - alert: failed_disk
+        expr: node_md_disks{state="failed"} > 0
+        for: 0m
+        annotations:
+          summary: "Disk failure!"
+          description: "{{ $value }} disk(s) down for {{ $labels.instance }}."
