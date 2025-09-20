@@ -172,7 +172,7 @@ groups:
       expr: '((node_hwmon_temp_celsius * ignoring(label) group_left(instance, job, node, sensor) node_hwmon_sensor_label{label!="tctl"} > 75)) * on(instance) group_left (nodename) node_uname_info{nodename=~".+"}'
       for: 5m
       labels:
-        severity: critical
+        severity: warning
       annotations:
         summary: Host physical component too hot (instance {{ $labels.instance }})
         description: "Physical hardware component too hot\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
